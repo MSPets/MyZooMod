@@ -1,4 +1,4 @@
-package mspets.my.zoomod;
+package mspets.my.zoomod.common;
 
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.IItemTier;

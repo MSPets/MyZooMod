@@ -1,18 +1,17 @@
-package mspets.my.zoomod.registry;
+package mspets.my.zoomod.common.registry;
 
-import mspets.my.zoomod.ModItemTier;
 import mspets.my.zoomod.MyZooMod;
-import net.minecraft.block.AbstractBlock;
+import mspets.my.zoomod.common.entity.PandaEntity;
+import mspets.my.zoomod.common.ModItemTier;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SwordItem;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
+import net.minecraft.item.*;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -21,7 +20,9 @@ public class RegistryHandler {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MyZooMod.MODID);
 
-    // Blocks
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPE = DeferredRegister.create(ForgeRegistries.ENTITIES, MyZooMod.MODID);
+
+    // Blocks with items
     public static final RegistryObject<Block> FEEDING_TROUGH = BLOCKS.register("feeding_trough", () ->
             new Block(
                     Block.Properties
@@ -44,4 +45,11 @@ public class RegistryHandler {
                     ModItemTier.CUSTOMNAMEHERE, 5, -2.8f, (new Item.Properties()).group(ItemGroup.COMBAT)
             )
     );
+
+    // TODO maybe remove
+    // Entities + egg
+    public static final RegistryObject<EntityType<PandaEntity>> PANDA_ENTITY = ENTITY_TYPE.register("panddda", () ->
+            EntityType.Builder.create(PandaEntity::new, EntityClassification.CREATURE)
+                    .size(0.9f,1.3f)
+                    .build(new ResourceLocation(MyZooMod.MODID, "panda_entity").toString()));
 }

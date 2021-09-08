@@ -1,4 +1,5 @@
 {
   "item.myzoomod.name_spear": "REE",
-  "block.myzoomod.feeding_trough": "Feeding Trough"
+  "block.myzoomod.feeding_trough": "Feeding Trough",
+  "entity.myzoomod.panda_entity": "Panda Entity"
 }

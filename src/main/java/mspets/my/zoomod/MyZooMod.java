@@ -1,12 +1,17 @@
 package mspets.my.zoomod;
 
-import mspets.my.zoomod.registry.RegistryHandler;
+import mspets.my.zoomod.client.render.PandaRender;
+import mspets.my.zoomod.common.entity.PandaEntity;
+import mspets.my.zoomod.common.registry.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -45,6 +50,10 @@ public class MyZooMod
         // Registry handler
         RegistryHandler.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegistryHandler.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegistryHandler.ENTITY_TYPE.register(FMLJavaModLoadingContext.get().getModEventBus());
+
+
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::miscSetup);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -53,10 +62,21 @@ public class MyZooMod
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
+    // My setup
+    @SuppressWarnings("deprecation")
+    public void miscSetup(final FMLCommonSetupEvent event)
+    {
 
+
+        DeferredWorkQueue.runLater(() -> {
+            GlobalEntityTypeAttributes.put(RegistryHandler.PANDA_ENTITY.get(), PandaEntity.setAttributes().create());
+        });
+    }
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+
+        RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.PANDA_ENTITY.get(), PandaRender::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

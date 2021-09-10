@@ -1,7 +1,7 @@
-package mspets.my.zoomod.client.render;
+package mspets.my.zoomod.client.render.entity;
 
 import mspets.my.zoomod.MyZooMod;
-import mspets.my.zoomod.client.model.PandaEntityModel;
+import mspets.my.zoomod.client.model.entity.PandaEntityModel;
 import mspets.my.zoomod.common.entity.PandaEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;

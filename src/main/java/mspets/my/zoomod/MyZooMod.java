@@ -1,6 +1,8 @@
 package mspets.my.zoomod;
 
-import mspets.my.zoomod.client.render.PandaRender;
+import mspets.my.zoomod.client.render.entity.CrocodileRender;
+import mspets.my.zoomod.client.render.entity.PandaRender;
+import mspets.my.zoomod.common.entity.CrocodileEntity;
 import mspets.my.zoomod.common.entity.PandaEntity;
 import mspets.my.zoomod.common.registry.RegistryHandler;
 import net.minecraft.block.Block;
@@ -21,11 +23,12 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod("myzoomod")
+@Mod(MyZooMod.MODID)
 public class MyZooMod
 {
     // May not be correct
@@ -35,6 +38,8 @@ public class MyZooMod
     private static final Logger LOGGER = LogManager.getLogger();
 
     public MyZooMod() {
+        GeckoLib.initialize();
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -66,10 +71,12 @@ public class MyZooMod
     @SuppressWarnings("deprecation")
     public void miscSetup(final FMLCommonSetupEvent event)
     {
-
-
         DeferredWorkQueue.runLater(() -> {
             GlobalEntityTypeAttributes.put(RegistryHandler.PANDA_ENTITY.get(), PandaEntity.setAttributes().create());
+        });
+
+        DeferredWorkQueue.runLater(() -> {
+            GlobalEntityTypeAttributes.put(RegistryHandler.CROCODILE_ENTITY.get(), CrocodileEntity.setAttributes().create());
         });
     }
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -77,6 +84,7 @@ public class MyZooMod
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
         RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.PANDA_ENTITY.get(), PandaRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.CROCODILE_ENTITY.get(), CrocodileRender::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

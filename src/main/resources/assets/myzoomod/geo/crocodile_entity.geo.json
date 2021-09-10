@@ -1,0 +1,98 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.Crocodile",
+				"texture_width": 160,
+				"texture_height": 160,
+				"visible_bounds_width": 11,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Body",
+					"pivot": [0, 9, 0],
+					"cubes": [
+						{"origin": [-8, 4, -25], "size": [16, 10, 50], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Head",
+					"parent": "Body",
+					"pivot": [-1, 9, -25],
+					"cubes": [
+						{"origin": [-7, 5, -45], "size": [14, 8, 20], "uv": [0, 60]}
+					]
+				},
+				{
+					"name": "FrontLegs",
+					"parent": "Body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "FrontLeft",
+					"parent": "FrontLegs",
+					"pivot": [9, 6, -22],
+					"cubes": [
+						{"origin": [8, 0, -24], "size": [3, 8, 4], "uv": [24, 26]}
+					]
+				},
+				{
+					"name": "FrontRight",
+					"parent": "FrontLegs",
+					"pivot": [-9, 6, -22],
+					"cubes": [
+						{"origin": [-11, 0, -24], "size": [3, 8, 4], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "BackLegs",
+					"parent": "Body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "BackLeft",
+					"parent": "BackLegs",
+					"pivot": [9, 6, 22],
+					"cubes": [
+						{"origin": [8, 0, 20], "size": [3, 8, 4], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "BackRight",
+					"parent": "BackLegs",
+					"pivot": [-9, 6, 22],
+					"cubes": [
+						{"origin": [-11, 0, 20], "size": [3, 8, 4], "uv": [14, 18]}
+					]
+				},
+				{
+					"name": "Tail",
+					"parent": "Body",
+					"pivot": [0, 9, 25],
+					"cubes": [
+						{"origin": [-6, 6, 25], "size": [12, 6, 16], "uv": [68, 60]}
+					]
+				},
+				{
+					"name": "Tail2",
+					"parent": "Tail",
+					"pivot": [0, 9, 41],
+					"cubes": [
+						{"origin": [-5, 7, 41], "size": [10, 4, 16], "uv": [82, 0]}
+					]
+				},
+				{
+					"name": "Tail3",
+					"parent": "Tail2",
+					"pivot": [0, 9, 57],
+					"cubes": [
+						{"origin": [-4, 8, 57], "size": [8, 2, 16], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

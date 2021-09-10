@@ -1,4 +1,4 @@
-package mspets.my.zoomod.client.model;// Made with Blockbench 3.9.3
+package mspets.my.zoomod.client.model.entity;// Made with Blockbench 3.9.3
 // Exported for Minecraft version 1.15 - 1.16 with MCP mappings
 // Paste this class into your mod and generate all required imports
 

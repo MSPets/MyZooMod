@@ -1,8 +1,10 @@
 package mspets.my.zoomod;
 
 import mspets.my.zoomod.client.render.entity.CrocodileRender;
+import mspets.my.zoomod.client.render.entity.MonkeyRender;
 import mspets.my.zoomod.client.render.entity.PandaRender;
 import mspets.my.zoomod.common.entity.CrocodileEntity;
+import mspets.my.zoomod.common.entity.MonkeyEntity;
 import mspets.my.zoomod.common.entity.PandaEntity;
 import mspets.my.zoomod.common.registry.RegistryHandler;
 import net.minecraft.block.Block;
@@ -74,9 +76,11 @@ public class MyZooMod
         DeferredWorkQueue.runLater(() -> {
             GlobalEntityTypeAttributes.put(RegistryHandler.PANDA_ENTITY.get(), PandaEntity.setAttributes().create());
         });
-
         DeferredWorkQueue.runLater(() -> {
             GlobalEntityTypeAttributes.put(RegistryHandler.CROCODILE_ENTITY.get(), CrocodileEntity.setAttributes().create());
+        });
+        DeferredWorkQueue.runLater(() -> {
+            GlobalEntityTypeAttributes.put(RegistryHandler.MONKEY_ENTITY.get(), MonkeyEntity.setAttributes().create());
         });
     }
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -85,6 +89,7 @@ public class MyZooMod
 
         RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.PANDA_ENTITY.get(), PandaRender::new);
         RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.CROCODILE_ENTITY.get(), CrocodileRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.MONKEY_ENTITY.get(), MonkeyRender::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

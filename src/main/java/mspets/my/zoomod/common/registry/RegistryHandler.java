@@ -1,15 +1,19 @@
 package mspets.my.zoomod.common.registry;
 
 import mspets.my.zoomod.MyZooMod;
-import mspets.my.zoomod.common.entity.CrocodileEntity;
-import mspets.my.zoomod.common.entity.PandaEntity;
 import mspets.my.zoomod.common.ModItemTier;
+import mspets.my.zoomod.common.entity.CrocodileEntity;
+import mspets.my.zoomod.common.entity.MonkeyEntity;
+import mspets.my.zoomod.common.entity.PandaEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.SwordItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -58,5 +62,10 @@ public class RegistryHandler {
             EntityType.Builder.create(CrocodileEntity::new, EntityClassification.CREATURE)
                     .size(3f,1f)
                     .build(new ResourceLocation(MyZooMod.MODID, "crocodile_entity").toString()));
+
+    public static final RegistryObject<EntityType<MonkeyEntity>> MONKEY_ENTITY = ENTITY_TYPE.register("monkey", () ->
+            EntityType.Builder.create(MonkeyEntity::new, EntityClassification.CREATURE)
+                    .size(3f,1f)
+                    .build(new ResourceLocation(MyZooMod.MODID, "monkey_entity").toString()));
 
 }

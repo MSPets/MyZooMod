@@ -19,7 +19,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 // https://forums.minecraftforge.net/topic/92625-1163-cant-register-entity-with-deferred-register/
-public class CrocodileEntity extends CreatureEntity implements IAnimatable
+public class MonkeyEntity extends CreatureEntity implements IAnimatable
 {
     private final AnimationFactory factory = new AnimationFactory(this);
 
@@ -27,15 +27,15 @@ public class CrocodileEntity extends CreatureEntity implements IAnimatable
     {
         if (event.isMoving())
         {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crocodile.walking", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.monkey.walk", true));
         }
         else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.crocodile.tail", true));
+            event.getController().clearAnimationCache();
         }
         return PlayState.CONTINUE;
     }
 
-    public CrocodileEntity (EntityType<? extends CreatureEntity> type, World worldIn){
+    public MonkeyEntity(EntityType<? extends CreatureEntity> type, World worldIn){
         super(type, worldIn);
     }
 

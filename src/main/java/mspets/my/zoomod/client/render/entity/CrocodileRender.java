@@ -17,6 +17,6 @@ public class CrocodileRender extends GeoEntityRenderer<CrocodileEntity> {
 
     @Override
     public ResourceLocation getEntityTexture(CrocodileEntity entity) {
-        return new ResourceLocation(MyZooMod.MODID, "textures/model/entity/crocodile_entity.png");
+        return new ResourceLocation(MyZooMod.MODID, "textures/entities/crocodile.png");
     }
 }

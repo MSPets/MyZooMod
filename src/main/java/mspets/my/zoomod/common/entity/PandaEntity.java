@@ -1,6 +1,6 @@
 package mspets.my.zoomod.common.entity;
 
-import mspets.my.zoomod.common.registry.RegistryHandler;
+import mspets.my.zoomod.common.registry.EntityRegistries;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -25,7 +25,7 @@ public class PandaEntity extends AnimalEntity{
     @Nullable
     @Override
     public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
-        PandaEntity entity = new PandaEntity(RegistryHandler.PANDA_ENTITY.get(), this.world);
+        PandaEntity entity = new PandaEntity(EntityRegistries.PANDA_ENTITY.get(), this.world);
         entity.onInitialSpawn((IServerWorld) this.world, this.world.getDifficultyForLocation(new BlockPos((IPosition) entity)), SpawnReason.BREEDING, (ILivingEntityData)  null, (CompoundNBT) null);
         return entity;
     }

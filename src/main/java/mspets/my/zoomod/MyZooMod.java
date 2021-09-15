@@ -3,12 +3,14 @@ package mspets.my.zoomod;
 import mspets.my.zoomod.client.render.entity.CrocodileRender;
 import mspets.my.zoomod.client.render.entity.MonkeyRender;
 import mspets.my.zoomod.client.render.entity.PandaRender;
+import mspets.my.zoomod.client.screen.FeedingTroughScreen;
 import mspets.my.zoomod.common.entity.CrocodileEntity;
 import mspets.my.zoomod.common.entity.MonkeyEntity;
 import mspets.my.zoomod.common.entity.PandaEntity;
-import mspets.my.zoomod.common.registry.RegistryHandler;
+import mspets.my.zoomod.common.registry.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -55,10 +57,11 @@ public class MyZooMod
         MinecraftForge.EVENT_BUS.register(this);
 
         // Registry handler
-        RegistryHandler.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        RegistryHandler.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        RegistryHandler.ENTITY_TYPE.register(FMLJavaModLoadingContext.get().getModEventBus());
-
+        BlockRegistries.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ContainerRegistries.CONTAINERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EntityRegistries.ENTITY_TYPE.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ItemRegistries.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        TileRegistries.TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::miscSetup);
     }
@@ -74,22 +77,26 @@ public class MyZooMod
     public void miscSetup(final FMLCommonSetupEvent event)
     {
         DeferredWorkQueue.runLater(() -> {
-            GlobalEntityTypeAttributes.put(RegistryHandler.PANDA_ENTITY.get(), PandaEntity.setAttributes().create());
+            GlobalEntityTypeAttributes.put(EntityRegistries.PANDA_ENTITY.get(), PandaEntity.setAttributes().create());
         });
         DeferredWorkQueue.runLater(() -> {
-            GlobalEntityTypeAttributes.put(RegistryHandler.CROCODILE_ENTITY.get(), CrocodileEntity.setAttributes().create());
+            GlobalEntityTypeAttributes.put(EntityRegistries.CROCODILE_ENTITY.get(), CrocodileEntity.setAttributes().create());
         });
         DeferredWorkQueue.runLater(() -> {
-            GlobalEntityTypeAttributes.put(RegistryHandler.MONKEY_ENTITY.get(), MonkeyEntity.setAttributes().create());
+            GlobalEntityTypeAttributes.put(EntityRegistries.MONKEY_ENTITY.get(), MonkeyEntity.setAttributes().create());
         });
     }
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 
-        RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.PANDA_ENTITY.get(), PandaRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.CROCODILE_ENTITY.get(), CrocodileRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.MONKEY_ENTITY.get(), MonkeyRender::new);
+        //event.enqueueWork(() ->{});
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistries.PANDA_ENTITY.get(), PandaRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistries.CROCODILE_ENTITY.get(), CrocodileRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistries.MONKEY_ENTITY.get(), MonkeyRender::new);
+
+        ScreenManager.registerFactory(ContainerRegistries.FEEDING_TROUGH_CONTAINER.get(), FeedingTroughScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

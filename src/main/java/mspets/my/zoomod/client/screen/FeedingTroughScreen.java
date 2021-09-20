@@ -11,7 +11,11 @@ import net.minecraft.util.text.ITextComponent;
 
 public class FeedingTroughScreen extends ContainerScreen<FeedingTroughContainer> {
 
+<<<<<<< HEAD
     private final ResourceLocation GUI = new ResourceLocation(MyZooMod.MODID, "textures/gui/feeding_trough_gui.png");
+=======
+    private final ResourceLocation GUI = new ResourceLocation(MyZooMod.MODID, "textures/gui/lightning_channeler_gui.png");
+>>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
 
     public FeedingTroughScreen(FeedingTroughContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(screenContainer, inv, titleIn);

@@ -61,7 +61,11 @@ public class MyZooMod
         ContainerRegistries.CONTAINERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EntityRegistries.ENTITY_TYPE.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemRegistries.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+<<<<<<< HEAD
         TileRegistries.TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+=======
+        TileRegisties.TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+>>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::miscSetup);
     }

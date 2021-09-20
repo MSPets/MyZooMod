@@ -28,16 +28,12 @@ public class FeedingTroughContainer extends Container {
         playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
 
-<<<<<<< HEAD
         // 8 from left, 86 from top for player inv
-=======
-        // 8 from left, 86 from top
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
+
         layoutPlayerInventorySlots(8, 86);
 
         if (tileEntity != null){
             tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-<<<<<<< HEAD
                 int x = 44;
                 int y = 36;
                 for (int i=0; i<5; i++){
@@ -45,10 +41,7 @@ public class FeedingTroughContainer extends Container {
                     x += 18;
                 }
                 //addSlot(new SlotItemHandler(h, 0, 80, 31));
-=======
-                addSlot(new SlotItemHandler(h, 0, 80, 31));
-                addSlot(new SlotItemHandler(h, 1, 80, 53));
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
+                //addSlot(new SlotItemHandler(h, 1, 80, 53));
             });
         }
     }
@@ -99,11 +92,7 @@ public class FeedingTroughContainer extends Container {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-<<<<<<< HEAD
     private static final int TE_INVENTORY_SLOT_COUNT = 5;  // must match TileEntityInventoryBasic.NUMBER_OF_SLOTS
-=======
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must match TileEntityInventoryBasic.NUMBER_OF_SLOTS
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
 
     @Override
     public ItemStack transferStackInSlot(PlayerEntity playerIn, int index) {

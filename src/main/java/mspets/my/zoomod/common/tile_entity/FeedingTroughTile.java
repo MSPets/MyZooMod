@@ -1,14 +1,7 @@
 package mspets.my.zoomod.common.tile_entity;
 
-<<<<<<< HEAD
 import mspets.my.zoomod.common.registry.TileRegistries;
 import net.minecraft.block.BlockState;
-=======
-import mspets.my.zoomod.common.registry.BlockRegistries;
-import mspets.my.zoomod.common.registry.TileRegisties;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.Item;
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
@@ -34,11 +27,8 @@ public class FeedingTroughTile extends TileEntity {
     }
 
     public FeedingTroughTile(){
-<<<<<<< HEAD
         this(TileRegistries.FEEDING_TROUGH_TILE.get());
-=======
-        this(TileRegisties.FEEDING_TROUGH_TILE.get());
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
+
     }
 
     @Override
@@ -54,43 +44,29 @@ public class FeedingTroughTile extends TileEntity {
     }
 
     private ItemStackHandler createHandler(){
-<<<<<<< HEAD
         // How many item slots
         return new ItemStackHandler(6){
-=======
-        return new ItemStackHandler(2){
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
+
             @Override
             protected void onContentsChanged(int slot) {
                 markDirty();
             }
 
             @Override
-<<<<<<< HEAD
             public boolean isItemValid(int slot, ItemStack stack) {
                 if(stack.getItem() == Items.WHEAT){
                     return stack.getItem() == Items.WHEAT;
                 }
                 else {
                     return false;
-=======
-            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                switch (slot){
-                    case 0: return stack.getItem() == Items.GLASS_PANE;
-                    default:
-                        return false;
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
+
                 }
                 //return super.isItemValid(slot, stack);
             }
 
             @Override
             public int getSlotLimit(int slot) {
-<<<<<<< HEAD
                 return 64;
-=======
-                return 1;
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
             }
 
             @Nonnull

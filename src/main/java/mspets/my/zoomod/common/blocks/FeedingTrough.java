@@ -1,11 +1,7 @@
 package mspets.my.zoomod.common.blocks;
 
 import mspets.my.zoomod.common.container.FeedingTroughContainer;
-<<<<<<< HEAD
 import mspets.my.zoomod.common.registry.TileRegistries;
-=======
-import mspets.my.zoomod.common.registry.TileRegisties;
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
 import mspets.my.zoomod.common.tile_entity.FeedingTroughTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -41,11 +37,7 @@ public class FeedingTrough extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-<<<<<<< HEAD
         return TileRegistries.FEEDING_TROUGH_TILE.get().create();
-=======
-        return TileRegisties.FEEDING_TROUGH_TILE.get().create();
->>>>>>> 54b034217c3b575d47a284fe9532774cca90e830
     }
 
     @Override

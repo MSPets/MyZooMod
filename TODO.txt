@@ -1,14 +1,6 @@
 TODO
- Entity
-  Make entity class
-  Attribute
-  AI
-  Model
-  Renderer
-  Assets
-  Bounding box
-  Register
-  Custom properties
-  Natural spawn
-  Client/server packet sync
-  Testing
+ Entity gui
+  Screen
+  Tile Entity
+  Container?
+
